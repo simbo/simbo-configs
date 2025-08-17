@@ -15,7 +15,7 @@
   "includeVersion": false,
   "readme": "./typedoc-index.md",
   "sidebarLinks": {
-    "Repository": "https://github.com/simbo/simbo-configs",
+    "Repository": "https://github.com/simbo/simbos-configs",
   },
   "searchInComments": true,
   "searchInDocuments": true,
@@ -29,7 +29,7 @@
   "packageOptions": {
     "tsconfig": "./tsconfig.build.json",
     "includeVersion": true,
-    "sourceLinkTemplate": "https://github.com/simbo/simbo-configs/blob/{gitRevision}/{path}#L{line}",
+    "sourceLinkTemplate": "https://github.com/simbo/simbos-configs/blob/{gitRevision}/{path}#L{line}",
     "gitRevision": "main",
     "basePath": "./src",
   },

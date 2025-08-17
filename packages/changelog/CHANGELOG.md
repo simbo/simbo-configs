@@ -1,4 +1,4 @@
-# @simbo-configs/changelog
+# @simbos-configs/changelog
 
 ## 1.0.0
 

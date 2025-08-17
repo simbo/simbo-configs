@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "author": "Simon Lepel <simbo@simbo.de> (https://simbo.de/)",
   "license": "MIT",
-  "homepage": "http://github.com/simbo/simbo-configs/tree/main/packages/cspell-config",
+  "homepage": "http://github.com/simbo/simbos-configs/tree/main/packages/cspell-config",
   "engines": {
     "node": ">=20"
   },
