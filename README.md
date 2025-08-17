@@ -22,8 +22,8 @@ A monorepo for my shared configurations.
 ### Setup
 
 ```bash
-git clone git@github.com:simbo/simbo-configs.git
-cd simbo-configs
+git clone git@github.com:simbo/simbos-configs.git
+cd simbos-configs
 pnpm install
 pnpm run build
 ```

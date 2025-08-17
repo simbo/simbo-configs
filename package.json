@@ -1,12 +1,12 @@
 {
-  "name": "simbo-configs",
+  "name": "simbos-configs",
   "description": "A monorepo for shared configurations.",
   "version": "0.0.0",
   "private": true,
   "author": "Simon Lepel <simbo@simbo.de> (http://simbo.de)",
   "license": "MIT",
-  "homepage": "http://github.com/simbo/simbo-configs",
-  "repository": "github:simbo/simbo-configs",
+  "homepage": "http://github.com/simbo/simbos-configs",
+  "repository": "github:simbo/simbos-configs",
   "engines": {
     "node": ">=20.0.0"
   },
