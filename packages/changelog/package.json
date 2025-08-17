@@ -1,0 +1,7 @@
+{
+  "name": "@simbo-configs/changelog",
+  "version": "0.0.0",
+  "description": "A meta-package holding the changelog for this monorepo.",
+  "type": "module",
+  "private": true
+}

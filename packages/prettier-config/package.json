@@ -1,0 +1,40 @@
+{
+  "name": "@simbo/prettier-config",
+  "description": "Simbo's shared Prettier configuration.",
+  "version": "0.0.0",
+  "author": "Simon Lepel <simbo@simbo.de> (https://simbo.de/)",
+  "license": "MIT",
+  "homepage": "http://github.com/simbo/simbo-configs/tree/main/packages/prettier-config",
+  "repository": "github:simbo/simbo-configs",
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "type": "module",
+  "exports": {
+    ".": "./dist/index.js"
+  },
+  "files": [
+    "CHANGELOG.md",
+    "dist",
+    "LICENSE.md",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc --project tsconfig.build.json",
+    "check:types": "tsc --noEmit",
+    "clean:dist": "rm -rf dist"
+  },
+  "peerDependencies": {
+    "prettier": "^3"
+  },
+  "dependencies": {
+    "@ianvs/prettier-plugin-sort-imports": "^4.6.2",
+    "prettier-plugin-organize-attributes": "^1.0.0"
+  },
+  "devDependencies": {
+    "@simbo/tsconfig": "workspace:*",
+    "@types/node": "^20.19.11",
+    "prettier": "^3.6.2",
+    "typescript": "^5.9.2"
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "$schema": "https://typedoc.org/schema.json",
+
+  "cleanOutputDir": true,
+  "entryPoints": ["packages/*"],
+  "entryPointStrategy": "packages",
+  // "plugin": ["typedoc-github-theme", "typedoc-plugin-mdn-links"],
+  "exclude": ["packages/tsconfig/", "packages/changelog/"],
+
+  "name": "Simbo's Configurations Documentation",
+  "router": "structure",
+  // "favicon": "./favicon.ico",
+  // "customFooterHtml": "<small><a href='https://github.com/simbo'>simbo</a></small>",
+  "hideGenerator": true,
+  "includeVersion": false,
+  "readme": "./typedoc-index.md",
+  "sidebarLinks": {
+    "Repository": "https://github.com/simbo/simbo-configs",
+  },
+  "searchInComments": true,
+  "searchInDocuments": true,
+  "visibilityFilters": {
+    "protected": true,
+    "private": true,
+    "inherited": true,
+    "external": true,
+  },
+
+  "packageOptions": {
+    "tsconfig": "./tsconfig.build.json",
+    "includeVersion": true,
+    "sourceLinkTemplate": "https://github.com/simbo/simbo-configs/blob/{gitRevision}/{path}#L{line}",
+    "gitRevision": "main",
+    "basePath": "./src",
+  },
+}

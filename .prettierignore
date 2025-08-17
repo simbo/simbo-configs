@@ -1,0 +1,3 @@
+# automatically includes entries from .gitignore
+
+pnpm-lock.yaml

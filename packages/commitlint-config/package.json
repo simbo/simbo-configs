@@ -1,0 +1,39 @@
+{
+  "name": "@simbo/commitlint-config",
+  "description": "Simbo's shared commitlint configuration based on the conventional commits standard.",
+  "version": "0.0.0",
+  "author": "Simon Lepel <simbo@simbo.de> (https://simbo.de/)",
+  "license": "MIT",
+  "homepage": "http://github.com/simbo/simbo-configs/tree/main/packages/commitlint-config",
+  "engines": {
+    "node": ">=20"
+  },
+  "type": "module",
+  "exports": {
+    ".": "./dist/index.js"
+  },
+  "files": [
+    "CHANGELOG.md",
+    "dist",
+    "LICENSE.md",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc --project tsconfig.build.json",
+    "check:types": "tsc --noEmit"
+  },
+  "peerDependencies": {
+    "@commitlint/cli": "^19"
+  },
+  "dependencies": {
+    "@commitlint/config-conventional": "^19.8.1"
+  },
+  "devDependencies": {
+    "@commitlint/lint": "^19.8.1",
+    "@commitlint/load": "^19.8.1",
+    "@commitlint/types": "^19.8.1",
+    "@simbo/tsconfig": "workspace:*",
+    "@types/node": "^20.19.11",
+    "typescript": "^5.9.2"
+  }
+}

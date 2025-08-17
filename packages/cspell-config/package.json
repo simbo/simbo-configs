@@ -1,0 +1,36 @@
+{
+  "name": "@simbo/cspell-config",
+  "description": "Simbo's shared CSpell configuration.",
+  "version": "0.0.0",
+  "author": "Simon Lepel <simbo@simbo.de> (https://simbo.de/)",
+  "license": "MIT",
+  "homepage": "http://github.com/simbo/simbo-configs/tree/main/packages/cspell-config",
+  "engines": {
+    "node": ">=20"
+  },
+  "type": "module",
+  "exports": {
+    ".": "./dist/index.js"
+  },
+  "files": [
+    "CHANGELOG.md",
+    "dictionaries",
+    "dist",
+    "LICENSE.md",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc --project tsconfig.build.json",
+    "check:types": "tsc --noEmit"
+  },
+  "peerDependencies": {
+    "cspell": "^9"
+  },
+  "devDependencies": {
+    "@cspell/cspell-types": "^9.2.0",
+    "@simbo/tsconfig": "workspace:*",
+    "@types/node": "^20.19.11",
+    "cspell": "^9.2.0",
+    "typescript": "^5.9.2"
+  }
+}

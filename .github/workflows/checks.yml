@@ -1,0 +1,90 @@
+name: Checks
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+run-name: |
+  ${{ format('[{0}] {1}', github.workflow, github.event_name == 'push' && github.event.head_commit.message || github.event_name == 'pull_request' && github.event.pull_request.title || github.ref_name) }}
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref_name }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🛎️ Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GH_PAT }}
+
+      - name: 🚚 Install pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: 🛠️ Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          cache: 'pnpm'
+          node-version-file: '.nvmrc'
+
+      - name: 📦 Install Dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: 👷 Build Packages
+        run: pnpm run build
+
+      - name: 🧐 Run Checks
+        run: pnpm run check
+
+      - name: 📘 Build Docs
+        run: pnpm run build:docs
+
+      - name: 📄 Check for Changesets
+        id: changesets
+        run: |
+          set -euo pipefail
+
+          # Check if there are any changesets present
+          hasChangesets=$([[ -d .changeset ]] && find .changeset -type f -name '*.md' -print -quit | grep -q . && echo true || echo false)
+
+          # Print and output if there are changesets
+          echo "has-changesets=$hasChangesets"
+          echo "has-changesets=${hasChangesets}" >> $GITHUB_OUTPUT
+
+      - name: 👮‍♂️ Pull Requests Must Have Changesets
+        if: >
+          github.event_name == 'pull_request' &&
+          github.event.pull_request.draft == false
+        run: |
+          set -euo pipefail
+
+          # Error if there are no changesets in the pull request
+          if [[ "${{ steps.changesets.outputs.has-changesets }}" != "true" ]]; then
+            echo "::error title=Missing Changeset::Pull requests must have changesets."
+            exit 1
+          fi
+
+      - name: 🚀 Trigger Release Workflow
+        if: >
+          github.event_name == 'push' &&
+          steps.changesets.outputs.has-changesets == 'true'
+        run: |
+          set -euo pipefail
+
+          # Send a 'trigger-release-workflow' as repository_dispatch event to the same repo
+          curl -sS -X POST \
+            -H "Accept: application/vnd.github+json" \
+            -H "Authorization: Bearer ${{ secrets.GH_PAT }}" \
+            -H "Content-Type: application/json" \
+            "https://api.github.com/repos/${{ github.repository }}/dispatches" \
+            -d "$(jq -n --arg ref "${{ github.ref_name }}" \
+                '{event_type:"trigger-release-workflow", client_payload:{ref:$ref}}')"

@@ -1,0 +1,113 @@
+name: Release
+
+on:
+  repository_dispatch:
+    types:
+      - trigger-release-workflow
+
+run-name: |
+  ${{ format('[{0}] {1}', github.workflow, github.event.client_payload.ref || github.ref_name) }}
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.client_payload.ref || github.ref_name }}
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🛎️ Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GH_PAT }}
+          ref: ${{ github.event.client_payload.ref || github.ref_name }}
+
+      - name: 🚚 Install pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: 🛠️ Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          cache: 'pnpm'
+          node-version-file: '.nvmrc'
+
+      - name: 📦 Install Dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: 🔄 Integrate Changesets and Sync Versions
+        run: |
+          set -euo pipefail
+
+          # changesets need a working prettier config, therefor the prettier-config package needs to be build first
+          pnpm run build --filter='@simbo/prettier-config'
+
+          # integrate changesets
+          pnpm exec changeset version
+
+          # update lockfile
+          pnpm install
+
+      - name: 🧾 Aggregate Package Versions for Release
+        id: releases
+        run: |
+          set -euo pipefail
+
+          # Get the names of changes files
+          changedFiles=$(git diff --name-only HEAD)
+
+          # Initialize an array of package versions for release
+          packages=()
+
+          # Loop through the changed files and check for package.json files.
+          # Check if the package.json has a version change, extract the package folder name and version.
+          # Join them with a slash and add it to the released packages list.
+          for file in $changedFiles; do
+            if [[ "$file" =~ ^packages/.+/package\.json$ ]]; then
+              oldVersion=$(git show HEAD:"$file" | jq -r .version 2>/dev/null || echo)
+              newVersion=$(jq -r .version "$file")
+              if [[ -n "$oldVersion" && -n "$newVersion" && "$oldVersion" != "$newVersion" ]]; then
+                pkgFolder=$(basename "$(dirname "$file")")
+                packages+=("${pkgFolder}/v${newVersion}")
+              fi
+            fi
+          done
+
+          # Fail if no packages are found
+          if [[ ${#packages[@]} -eq 0 ]]; then
+            echo "::error title=No Packages Found::No packages were found to release."
+            exit 1
+          fi
+
+          # Output the packages
+          echo "packages=${packages[*]}" >> $GITHUB_OUTPUT
+
+      - name: 📝 Commit & Push Changes
+        run: |
+          set -euo pipefail
+
+          # Set git user data
+          git config user.name "${{ github.actor }}"
+          git config user.email "${{ github.actor_id }}+${{ github.actor }}@users.noreply.github.com"
+
+          # Stage all changes
+          git add .
+
+          # Prepare release tag list and commit message
+          releases="${{ steps.releases.outputs.packages }}"
+          message="ci(release): ${releases}"
+
+          # Commit the releases.
+          git commit -m "$message" --no-verify
+
+          # Push the changes
+          git push origin "${{ github.event.client_payload.ref || github.ref_name }}" --no-verify
+
+          # Add and push a tag for every package release
+          for tag in $releases; do
+            git tag -a "$tag" -m "$tag"
+            # ! Tags need to be pushed separately to ensure separate workflow triggers
+            git push origin "$tag" --no-verify
+          done

@@ -1,0 +1,29 @@
+{
+  "name": "@simbo/tsconfig",
+  "description": "A shared TypeScript configurations.",
+  "version": "0.0.0",
+  "author": "Simon Lepel <simbo@simbo.de> (http://simbo.de)",
+  "license": "MIT",
+  "homepage": "http://github.com/simbo/simbo-configs/tree/main/packages/tsconfig",
+  "repository": "github:simbo/simbo-configs",
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "type": "module",
+  "exports": {
+    "./base": "./tsconfig.base.json",
+    "./node": "./tsconfig.node.json",
+    "./browser": "./tsconfig.browser.json"
+  },
+  "files": [
+    "CHANGELOG.md",
+    "LICENSE.md",
+    "README.md",
+    "tsconfig.base.json",
+    "tsconfig.browser.json",
+    "tsconfig.node.json"
+  ],
+  "peerDependencies": {
+    "typescript": "^5"
+  }
+}

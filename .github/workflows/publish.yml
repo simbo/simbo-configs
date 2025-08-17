@@ -1,0 +1,188 @@
+name: Publish
+
+on:
+  workflow_dispatch:
+    inputs:
+      workspace:
+        description: 'Workspace folder (e.g. prettier-config)'
+        type: string
+        required: true
+      version:
+        description: 'Version (e.g. 1.2.3)'
+        type: string
+        required: true
+  push:
+    tags:
+      - '*/v*.*.*'
+      - '!changelog/v*'
+
+run-name: |
+  ${{ format('[{0}] {1}', github.workflow, github.event_name == 'push' && github.ref_name || github.event_name == 'workflow_dispatch' && format('{0}/v{1}', github.event.inputs.workspace, github.event.inputs.version) || github.ref_name) }}
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event_name == 'workflow_dispatch' && github.event.inputs.workspace || github.ref_name }}
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🧾 Prepare Publish Params
+        id: params
+        run: |
+          set -euo pipefail
+
+          # Set tag, version and workspace based on the event type
+          if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
+            workspace="${{ github.event.inputs.workspace }}"
+            if [[ "$workspace" =~ [^a-zA-Z0-9._-] ]]; then
+              echo "::error title=Invalid Workspace::Workspace may only contain letters, numbers, dot, underscore, hyphen."
+              exit 1
+            fi
+            version="${{ github.event.inputs.version }}"
+            if [[ "$version" =~ [^0-9.] ]]; then
+              echo "::error title=Invalid Version::Version may only contain numbers and dots."
+              exit 1
+            fi
+            tag="${workspace}/v${version}"
+          else
+            tag="${{ github.ref_name }}"
+            workspace="${tag%%/v*}"
+            version="${tag##*/v}"
+          fi
+
+          # Fail if no parameters are set
+          if [[ -z "$workspace" ]]; then
+            echo "::error title=Missing Workspace::Workspace must be set."
+            exit 1
+          fi
+          if [[ -z "$version" ]]; then
+            echo "::error title=Missing Version::Version must be set."
+            exit 1
+          fi
+          if [[ -z "$tag" ]]; then
+            echo "::error title=Missing Tag::Tag must be set."
+            exit 1
+          fi
+
+          # Print and output params
+          echo "workspace=$workspace"
+          echo "workspace=${workspace}" >> $GITHUB_OUTPUT
+          echo "version=$version"
+          echo "version=${version}" >> $GITHUB_OUTPUT
+          echo "tag=$tag"
+          echo "tag=${tag}" >> $GITHUB_OUTPUT
+
+      - name: 🛎️ Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GH_PAT }}
+          ref: ${{ steps.params.outputs.tag }}
+
+      - name: 🚚 Install pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: 🛠️ Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          cache: 'pnpm'
+          node-version-file: '.nvmrc'
+          registry-url: https://registry.npmjs.org
+          always-auth: true
+
+      - name: 📦 Install Dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: 🧾 Get Package Name and Private Field
+        id: package
+        run: |
+          set -euo pipefail
+
+          packageName=$(jq -r '.name' "packages/${{ steps.params.outputs.workspace }}/package.json")
+          packagePrivate=$(jq -r '.private // false' "packages/${{ steps.params.outputs.workspace }}/package.json")
+
+          echo "name=${packageName}" >> $GITHUB_OUTPUT
+          echo "private=${packagePrivate}" >> $GITHUB_OUTPUT
+
+      - name: 🧾 Get Release Date and Description
+        id: release
+        run: |
+          set -euo pipefail
+
+          workspace="${{ steps.params.outputs.workspace }}"
+          version="${{ steps.params.outputs.version }}"
+          changelogFile="packages/${workspace}/CHANGELOG.md"
+          releaseDate=$(TZ="Europe/Berlin" date +%Y-%m-%d\ %H:%M:%S\ %Z)
+          description=""
+
+          # Fail if the changelog file does not exist
+          if [[ ! -f "$changelogFile" ]]; then
+            echo "::error title=Missing Changelog File::Changelog file not found: $changelogFile"
+            exit 1
+          fi
+
+          # Extract the respective version's section from the changelog and remove leading and trailing whitespace
+          description=$(awk -v ver="## ${version}" '
+              $0 == ver { found=1; next }
+              found && /^## / { exit }
+              found { print }
+            ' "$changelogFile" | \
+            awk 'BEGIN{found=0} NF{found=1} found{print}' | tac | \
+            awk 'BEGIN{found=0} NF{found=1} found{print}' | tac)
+
+          # Fail if no description is set
+          if [[ -z "$description" ]]; then
+            echo "::error title=Missing Changelog Section::Section for ${version} could not be found in changelog: $changelogFile"
+            exit 1
+          fi
+
+          # Output date and description
+          echo "date=${releaseDate}" >> $GITHUB_OUTPUT
+          {
+            echo "description<<EOF"
+            echo "$description"
+            echo "EOF"
+          } >> "$GITHUB_OUTPUT"
+
+      - name: 👷‍♂️ Build Package
+        run: pnpm run build --filter="${{ steps.package.outputs.name }}"
+
+      - name: 📤 Publish to Registry
+        if: ${{ steps.package.outputs.private == 'false' }}
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: pnpm publish --filter="${{ steps.package.outputs.name }}" --no-git-checks --access public
+
+      - name: ⚫️ Create Tarball
+        id: tarball
+        run: |
+          set -euo pipefail
+
+          # Create a tarball and get the tarball path
+          tarballAbsPath=$(pnpm pack --filter="${{ steps.package.outputs.name }}" | tail -n 1)
+          tarballRelPath=$(realpath --relative-to=$(pwd) $tarballAbsPath)
+
+          # Fail if the tarball file does not exist
+          if [[ ! -f "$tarballRelPath" ]]; then
+            echo "::error title=Missing Tarball::Tarball not found: $tarballRelPath"
+            exit 1
+          fi
+
+          # Output tarball path
+          echo "path=${tarballRelPath}" >> $GITHUB_OUTPUT
+
+      - name: 🎁 Create GitHub Release
+        uses: ncipollo/release-action@v1
+        with:
+          tag: ${{ steps.params.outputs.tag }}
+          name: ${{ steps.package.outputs.name }} v${{ steps.params.outputs.version }}
+          body: |
+            _${{ steps.release.outputs.date }}_
+
+            ${{ steps.release.outputs.description }}
+          artifacts: ${{ steps.tarball.outputs.path }}
+          token: ${{ secrets.GH_PAT }}
+          makeLatest: true

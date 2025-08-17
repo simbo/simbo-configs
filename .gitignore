@@ -1,0 +1,22 @@
+# Build Artifacts, Dependencies, etc.
+/node_modules
+/.turbo
+/docs
+/coverage
+/packages/*/node_modules
+/packages/*/.turbo
+/packages/*/dist
+/packages/*/coverage
+
+# IDEs and Editors
+/.vscode/*
+!/.vscode/extensions.json
+!/.vscode/settings.json
+
+# Logs, Scan Results, etc.
+*.log
+*.sarif
+
+# System Files
+.DS_Store
+Thumbs.db

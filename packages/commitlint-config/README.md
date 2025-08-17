@@ -1,0 +1,27 @@
+# Simbo's Commitlint Configuration
+
+A shared [commitlint](https://commitlint.js.org/) configuration based on the
+[conventional commits](https://www.conventionalcommits.org/) standard.
+
+## Usage
+
+Install commitlint and the configuration:
+
+```bash
+npm i [-D] @commitlint/cli @simbo/commitlint-config
+```
+
+Create a
+[commitlint configuration](https://commitlint.js.org/reference/configuration.html)
+file in the root of your project.
+
+For example, `.commitlintrc.yml`:
+
+```yaml
+extends:
+  - '@simbo/commitlint-config'
+```
+
+## License
+
+[MIT © Simon Lepel](http://simbo.mit-license.org/)
