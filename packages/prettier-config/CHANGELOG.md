@@ -1,5 +1,11 @@
 # @simbo/prettier-config
 
+## 1.0.1
+
+### Patch Changes
+
+- 183e705: set required plugins as peerDependencies
+
 ## 1.0.0
 
 ### Major Changes
