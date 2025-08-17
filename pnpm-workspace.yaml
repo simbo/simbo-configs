@@ -1,6 +1,2 @@
 packages:
   - packages/*
-
-publicHoistPattern:
-  - '@ianvs/prettier-plugin-sort-imports'
-  - 'prettier-plugin-organize-attributes'
