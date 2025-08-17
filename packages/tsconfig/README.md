@@ -1,5 +1,7 @@
 # Simbo's TypeScript Configurations
 
+[📦 **`@simbo/tsconfig`**](https://npmjs.com/package/@simbo/tsconfig)
+
 Shared TypeScript configurations.
 
 ## Usage
