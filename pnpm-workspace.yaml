@@ -1,2 +1,8 @@
 packages:
   - packages/*
+
+verifyDepsBeforeRun: prompt
+engineStrict: true
+onlyBuiltDependencies: [esbuild]
+catalogMode: strict
+cleanupUnusedCatalogs: true
