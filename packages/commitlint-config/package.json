@@ -26,14 +26,14 @@
     "@commitlint/cli": "^19"
   },
   "dependencies": {
-    "@commitlint/config-conventional": "^19.8.1"
+    "@commitlint/config-conventional": "catalog:shared"
   },
   "devDependencies": {
-    "@commitlint/lint": "^19.8.1",
-    "@commitlint/load": "^19.8.1",
-    "@commitlint/types": "^19.8.1",
+    "@commitlint/lint": "catalog:shared",
+    "@commitlint/load": "catalog:shared",
+    "@commitlint/types": "catalog:shared",
     "@simbo/tsconfig": "workspace:*",
-    "@types/node": "^20.19.11",
-    "typescript": "^5.9.2"
+    "@types/node": "catalog:common",
+    "typescript": "catalog:common"
   }
 }
