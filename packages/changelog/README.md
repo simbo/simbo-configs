@@ -1,5 +1,5 @@
-# Simbo's Configurations Changelog
+# Simbo's Configurations — Changelog
 
-This package holds the changelog for this monorepo.
+A meta-package holding the changelog for this monorepo.
 
 👉 [**`./CHANGELOG.md`**](./CHANGELOG.md)
