@@ -7,7 +7,7 @@
   // "plugin": ["typedoc-github-theme", "typedoc-plugin-mdn-links"],
   "exclude": ["packages/tsconfig/", "packages/changelog/"],
 
-  "name": "Simbo's Configurations Documentation",
+  "name": "Simbo's Configurations",
   "router": "structure",
   // "favicon": "./favicon.ico",
   // "customFooterHtml": "<small><a href='https://github.com/simbo'>simbo</a></small>",
