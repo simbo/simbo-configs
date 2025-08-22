@@ -1,5 +1,5 @@
 {
-  "name": "@simbos-configs/changelog",
+  "name": "changelog",
   "version": "1.0.0",
   "description": "A meta-package holding the changelog for this monorepo.",
   "type": "module",

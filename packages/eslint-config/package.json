@@ -22,11 +22,9 @@
   ],
   "author": "Simon Lepel <simbo@simbo.de> (https://simbo.de/)",
   "license": "MIT",
-  "homepage": "http://github.com/simbo/simbos-configs/tree/main/packages/eslint-config",
-  "repository": "github:simbo/simbos-configs",
-  "bugs": {
-    "url": "https://github.com/simbo/simbos-configs/issues"
-  },
+  "homepage": "http://github.com/simbo/packages/tree/main/packages/eslint-config",
+  "repository": "github:simbo/packages",
+  "bugs": "https://github.com/simbo/packages/issues",
   "engines": {
     "node": ">=20.0.0"
   },
@@ -57,21 +55,24 @@
     "eslint": "^9"
   },
   "dependencies": {
-    "@eslint/config-helpers": "catalog:",
-    "@eslint/js": "catalog:shared",
-    "eslint-config-prettier": "catalog:shared",
-    "eslint-plugin-jsdoc": "catalog:shared",
-    "eslint-plugin-n": "catalog:shared",
-    "eslint-plugin-unicorn": "catalog:shared",
-    "globals": "catalog:shared",
-    "typescript-eslint": "catalog:shared"
+    "@eslint/config-helpers": "catalog:packages",
+    "@eslint/js": "catalog:packages",
+    "eslint-config-prettier": "catalog:packages",
+    "eslint-plugin-jsdoc": "catalog:packages",
+    "eslint-plugin-n": "catalog:packages",
+    "eslint-plugin-unicorn": "catalog:packages",
+    "globals": "catalog:packages",
+    "typescript-eslint": "catalog:packages"
   },
   "devDependencies": {
-    "@eslint/config-inspector": "catalog:shared",
+    "@eslint/config-inspector": "catalog:packages",
     "@simbo/tsconfig": "workspace:*",
-    "@types/node": "catalog:common",
-    "eslint": "catalog:shared",
-    "jiti": "catalog:shared",
-    "typescript": "catalog:common"
+    "@types/node": "catalog:core",
+    "@vitest/coverage-v8": "catalog:core",
+    "@vitest/ui": "catalog:core",
+    "eslint": "catalog:core",
+    "jiti": "catalog:core",
+    "typescript": "catalog:core",
+    "vitest": "catalog:core"
   }
 }

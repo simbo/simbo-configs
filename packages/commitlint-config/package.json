@@ -4,7 +4,9 @@
   "version": "1.0.0",
   "author": "Simon Lepel <simbo@simbo.de> (https://simbo.de/)",
   "license": "MIT",
-  "homepage": "http://github.com/simbo/simbos-configs/tree/main/packages/commitlint-config",
+  "homepage": "http://github.com/simbo/packages/tree/main/packages/commitlint-config",
+  "repository": "github:simbo/packages",
+  "bugs": "https://github.com/simbo/packages/issues",
   "engines": {
     "node": ">=20"
   },
@@ -20,20 +22,31 @@
   ],
   "scripts": {
     "build": "tsc --project tsconfig.build.json",
-    "check:types": "tsc --noEmit"
+    "check:eslint": "eslint --config ./eslint.config.ts --max-warnings 0",
+    "check:types": "tsc --noEmit",
+    "clean:dist": "rm -rf dist",
+    "fix:eslint": "pnpm run check:eslint --fix",
+    "test": "vitest run --coverage",
+    "test:ui": "pnpm run test:watch --ui",
+    "test:watch": "vitest dev --coverage"
   },
   "peerDependencies": {
     "@commitlint/cli": "^19"
   },
   "dependencies": {
-    "@commitlint/config-conventional": "catalog:shared"
+    "@commitlint/config-conventional": "catalog:packages"
   },
   "devDependencies": {
-    "@commitlint/lint": "catalog:shared",
-    "@commitlint/load": "catalog:shared",
-    "@commitlint/types": "catalog:shared",
+    "@commitlint/lint": "catalog:packages",
+    "@commitlint/load": "catalog:packages",
+    "@commitlint/types": "catalog:packages",
     "@simbo/tsconfig": "workspace:*",
-    "@types/node": "catalog:common",
-    "typescript": "catalog:common"
+    "@types/node": "catalog:core",
+    "@vitest/coverage-v8": "catalog:core",
+    "@vitest/ui": "catalog:core",
+    "eslint": "catalog:core",
+    "jiti": "catalog:core",
+    "typescript": "catalog:core",
+    "vitest": "catalog:core"
   }
 }

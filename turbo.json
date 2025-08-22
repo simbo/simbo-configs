@@ -9,6 +9,10 @@
     "clean:dist": {
       "cache": false,
       "outputLogs": "none"
+    },
+    "test": {
+      "dependsOn": ["^build"],
+      "cache": false
     }
   }
 }

@@ -1,16 +1,12 @@
-# Simbo's Configurations
+# Simbo's Packages
 
-A monorepo for my shared configurations.
+A monorepo for my packages.
+
+---
 
 ## Packages
 
-- [`@simbo/commitlint-config`](./packages/commitlint-config)
-
-- [`@simbo/cspell-config`](./packages/cspell-config)
-
-- [`@simbo/prettier-config`](./packages/prettier-config)
-
-- [`@simbo/tsconfig`](./packages/tsconfig)
+TBD
 
 ## Development
 
@@ -22,26 +18,88 @@ A monorepo for my shared configurations.
 ### Setup
 
 ```bash
-git clone git@github.com:simbo/simbos-configs.git
-cd simbos-configs
+git clone git@github.com:simbo/packages.git
+cd simbos-packages
 pnpm install
 pnpm run build
 ```
 
 ### Usage
 
+You should be familiar with [pnpm](https://pnpm.io/) and
+[Turborepo](https://turbo.build/).
+
+#### Building
+
 ```bash
+# build all packages
+pnpm run build
+
 # build a package
-pnpm run build --filter=@simbo/tsconfig
-
-# check for dependency updates using npm-check-updates
-pnpm run update:patch
-pnpm run update:minor
-pnpm run update:latest
-
-# run all checks and builds before push
-pnpm run preflight
+pnpm run build --filter=<TURBO_SELECTOR>
 ```
+
+#### Dependencies
+
+```bash
+# install dependencies for all workspaces
+pnpm install
+
+# add a dependency to a workspace
+pnpm add --filter=<PNPM_SELECTOR> [-D] <DEPENDENCY>
+
+# remove a dependency from a workspace
+pnpm remove --filter=<PNPM_SELECTOR> <DEPENDENCY>
+
+# interactively update the dependency catalogs for all workspaces
+pnpm update --recursive --interactive --latest
+```
+
+#### Tests
+
+```bash
+# run all tests for all packages
+pnpm run test
+# or for a specific package
+pnpm run --filter=<PNPM_SELECTOR> test
+
+# run tests in watch mode
+pnpm run [--filter=<PNPM_SELECTOR>] test:watch
+
+# run tests in ui mode
+pnpm run [--filter=<PNPM_SELECTOR>] test:ui
+```
+
+#### Checks
+
+```bash
+# run all possible checks, builds, and tests
+pnpm run preflight
+
+# run all checks for all packages
+pnpm run check
+
+# prettier
+pnpm run [--filter=<PNPM_SELECTOR>] check:format
+pnpm run [--filter=<PNPM_SELECTOR>] fix:format
+
+# eslint
+pnpm run [--filter=<PNPM_SELECTOR>] check:eslint
+pnpm run [--filter=<PNPM_SELECTOR>] fix:eslint
+
+# cspell
+pnpm run [--filter=<PNPM_SELECTOR>] check:spelling
+
+# types
+pnpm run [--filter=<PNPM_SELECTOR>] check:types
+
+#
+```
+
+### CI
+
+Adding changesets to the main branch will automatically trigger releases and
+publish the affected packages.
 
 ## Changelog
 

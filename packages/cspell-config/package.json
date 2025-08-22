@@ -4,7 +4,9 @@
   "version": "1.0.0",
   "author": "Simon Lepel <simbo@simbo.de> (https://simbo.de/)",
   "license": "MIT",
-  "homepage": "http://github.com/simbo/simbos-configs/tree/main/packages/cspell-config",
+  "homepage": "http://github.com/simbo/packages/tree/main/packages/cspell-config",
+  "repository": "github:simbo/packages",
+  "bugs": "https://github.com/simbo/packages/issues",
   "engines": {
     "node": ">=20"
   },
@@ -27,10 +29,15 @@
     "cspell": "^9"
   },
   "devDependencies": {
-    "@cspell/cspell-types": "catalog:shared",
+    "@cspell/cspell-types": "catalog:packages",
     "@simbo/tsconfig": "workspace:*",
-    "@types/node": "catalog:common",
-    "cspell": "catalog:shared",
-    "typescript": "catalog:common"
+    "@types/node": "catalog:core",
+    "@vitest/coverage-v8": "catalog:core",
+    "@vitest/ui": "catalog:core",
+    "cspell": "catalog:packages",
+    "eslint": "catalog:core",
+    "jiti": "catalog:core",
+    "typescript": "catalog:core",
+    "vitest": "catalog:core"
   }
 }

@@ -1,4 +1,4 @@
-# Simbo's Configurations — Changelog
+# Simbo's Packages — Changelog
 
 A meta-package holding the changelog for this monorepo.
 
