@@ -2,6 +2,20 @@
 
 A monorepo for my packages.
 
+<!-- TOC depthFrom:2 depthTo:3 -->
+
+- [Packages](#packages)
+- [Development](#development)
+  - [Requirements](#requirements)
+  - [Setup](#setup)
+  - [Toolset](#toolset)
+  - [Usage](#usage)
+  - [Releases and Publishing](#releases-and-publishing)
+- [Changelog](#changelog)
+- [License](#license)
+
+<!-- /TOC -->
+
 ---
 
 ## Packages
@@ -12,6 +26,7 @@ TBD
 
 ### Requirements
 
+- a linux-based operating system
 - node.js (v22) via [nvm](https://github.com/nvm-sh/nvm)
 - [pnpm](https://pnpm.io/) (v10)
 
@@ -24,10 +39,24 @@ pnpm install
 pnpm run build
 ```
 
-### Usage
+### Toolset
 
-You should be familiar with [pnpm](https://pnpm.io/) and
-[Turborepo](https://turbo.build/).
+- Repository Management
+  - [pnpm](https://pnpm.io/)
+  - [Turborepo](https://turbo.build/)
+  - [Changesets](https://github.com/changesets/changesets#readme)
+  - [Commitlint](https://commitlint.js.org/)
+
+- Documentation
+  - [TypeDoc](https://typedoc.org/)
+
+- Testing and Quality Control
+  - [Vitest](https://vitest.dev/)
+  - [ESLint](https://eslint.org/)
+  - [Prettier](https://prettier.io/)
+  - [CSpell](https://cspell.org/)
+
+### Usage
 
 #### Building
 
@@ -96,7 +125,7 @@ pnpm run [--filter=<PNPM_SELECTOR>] check:types
 #
 ```
 
-### CI
+### Releases and Publishing
 
 Adding changesets to the main branch will automatically trigger releases and
 publish the affected packages.
