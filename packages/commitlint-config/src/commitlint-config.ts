@@ -16,6 +16,9 @@ export const config: UserConfig = {
 
   // Customized rules
   rules: {
+    // Require a scope for all commits
+    'scope-empty': [RuleConfigSeverity.Error, 'never'],
+
     // Increase the maximum length of the header to 160 characters
     'header-max-length': [RuleConfigSeverity.Error, 'always', MAX_HEADER_LENGTH],
     'body-max-line-length': [RuleConfigSeverity.Error, 'always', MAX_BODY_LINE_LENGTH],
