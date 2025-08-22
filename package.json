@@ -29,11 +29,8 @@
     "fix:format": "pnpm run x:prettier --write .",
     "preflight": "pnpm install --frozen-lockfile && pnpm run build && pnpm run check && pnpm run build:docs",
     "prepare": "husky",
-    "update:latest": "pnpm run x:ncu --target latest --reject='/^(npm|pnpm|@types/node)$/'",
-    "update:minor": "pnpm run x:ncu --target minor --reject='/^(npm|pnpm)$/'",
-    "update:patch": "pnpm run x:ncu --target patch --reject='/^(npm|pnpm)$/'",
+    "serve:docs": "npx --yes http-server -c-1 ./docs",
     "x:cspell": "turbo run build --filter=@simbo/cspell-config && cspell",
-    "x:ncu": "ncu --workspaces --root --install=never --packageManager=pnpm --interactive",
     "x:prettier": "turbo run build --filter=@simbo/prettier-config && prettier"
   },
   "devDependencies": {
