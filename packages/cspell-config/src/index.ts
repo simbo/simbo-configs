@@ -1,1 +1,1 @@
-export { config as default } from './lib/config.js';
+export { config as default } from './cspell-config.js';
