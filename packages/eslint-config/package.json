@@ -1,0 +1,77 @@
+{
+  "name": "@simbo/eslint-config",
+  "description": "Shared ESLint configurations for different environments and technology stacks with utilities for configuration customization.",
+  "version": "1.0.1",
+  "keywords": [
+    "eslint",
+    "eslintconfig",
+    "eslint-config",
+    "lint",
+    "linter",
+    "code-style",
+    "style-guide",
+    "flat-config",
+    "typescript",
+    "typescript-eslint",
+    "unicorn",
+    "jsdoc",
+    "node",
+    "browser",
+    "prettier",
+    "testing"
+  ],
+  "author": "Simon Lepel <simbo@simbo.de> (https://simbo.de/)",
+  "license": "MIT",
+  "homepage": "http://github.com/simbo/simbos-configs/tree/main/packages/eslint-config",
+  "repository": "github:simbo/simbos-configs",
+  "bugs": {
+    "url": "https://github.com/simbo/simbos-configs/issues"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "type": "module",
+  "exports": {
+    ".": "./dist/index.js",
+    "./utils": "./dist/utils/index.js",
+    "./eslint-js": "./dist/configs/eslint-js-configs.js",
+    "./jsdoc": "./dist/configs/jsdoc-configs.js",
+    "./n": "./dist/configs/n-configs.js",
+    "./prettier": "./dist/configs/prettier-configs.js",
+    "./testing": "./dist/configs/testing-configs.js",
+    "./typescript-eslint": "./dist/configs/typescript-eslint-configs.js",
+    "./unicorn": "./dist/configs/unicorn-configs.js"
+  },
+  "files": [
+    "CHANGELOG.md",
+    "dist",
+    "LICENSE.md",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc --project tsconfig.build.json",
+    "check:types": "tsc --noEmit",
+    "clean:dist": "rm -rf dist"
+  },
+  "peerDependencies": {
+    "eslint": "^9"
+  },
+  "dependencies": {
+    "@eslint/config-helpers": "catalog:",
+    "@eslint/js": "catalog:shared",
+    "eslint-config-prettier": "catalog:shared",
+    "eslint-plugin-jsdoc": "catalog:shared",
+    "eslint-plugin-n": "catalog:shared",
+    "eslint-plugin-unicorn": "catalog:shared",
+    "globals": "catalog:shared",
+    "typescript-eslint": "catalog:shared"
+  },
+  "devDependencies": {
+    "@eslint/config-inspector": "catalog:shared",
+    "@simbo/tsconfig": "workspace:*",
+    "@types/node": "catalog:common",
+    "eslint": "catalog:shared",
+    "jiti": "catalog:shared",
+    "typescript": "catalog:common"
+  }
+}
