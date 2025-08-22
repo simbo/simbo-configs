@@ -8,7 +8,7 @@
   "exclude": ["packages/tsconfig/", "packages/changelog/"],
 
   "name": "Simbo's Configurations",
-  "router": "structure",
+  "router": "kind-dir",
   // "favicon": "./favicon.ico",
   // "customFooterHtml": "<small><a href='https://github.com/simbo'>simbo</a></small>",
   "hideGenerator": true,
