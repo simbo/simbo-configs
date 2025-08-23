@@ -45,8 +45,8 @@ jobs:
       - name: 🧐 Run Checks
         run: pnpm run check
 
-      # - name: 🧑‍🔬 Run Tests
-      #   run: pnpm run test
+      - name: 🧑‍🔬 Run Tests
+        run: pnpm run test
 
       - name: 📘 Build Docs
         run: pnpm run build:docs
