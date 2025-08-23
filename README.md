@@ -11,7 +11,6 @@ A monorepo for my packages.
   - [Toolset](#toolset)
   - [Usage](#usage)
   - [Releases and Publishing](#releases-and-publishing)
-- [Changelog](#changelog)
 - [License](#license)
 
 <!-- /TOC -->
@@ -141,7 +140,7 @@ pnpm run serve:docs
 Adding changesets to the main branch will automatically create releases for the
 affected packages and publish them to the registry.
 
-<details><summary>🚀 <em>Continuous Integration Flow</em></summary>
+<details><summary>🚀 <strong><em>Continuous Integration Flow</em></strong></summary>
 
 ```mermaid
 flowchart LR
@@ -212,10 +211,6 @@ flowchart LR
 ```
 
 </details>
-
-## Changelog
-
-👉 [`./packages/changelog/CHANGELOG.md`](./packages/changelog/CHANGELOG.md)
 
 ## License
 
