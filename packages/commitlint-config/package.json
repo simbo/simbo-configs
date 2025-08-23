@@ -2,6 +2,18 @@
   "name": "@simbo/commitlint-config",
   "description": "Simbo's shared commitlint configuration based on the conventional commits standard.",
   "version": "1.0.2",
+  "keywords": [
+    "commitlint",
+    "config",
+    "configuration",
+    "conventional-commits",
+    "git",
+    "commits",
+    "lint",
+    "rules",
+    "shared",
+    "preset"
+  ],
   "author": "Simon Lepel <simbo@simbo.de> (https://simbo.de/)",
   "license": "MIT",
   "homepage": "http://github.com/simbo/packages/tree/main/packages/commitlint-config",
