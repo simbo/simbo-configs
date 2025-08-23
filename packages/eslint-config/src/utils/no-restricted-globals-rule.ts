@@ -20,5 +20,5 @@ export function noRestrictedGlobalsRule(
       restrictedGlobals.push({ name });
     }
   }
-  return { 'no-restricted-globals': ['error', ...restrictedGlobals] };
+  return restrictedGlobals.length === 0 ? {} : { 'no-restricted-globals': ['error', ...restrictedGlobals] };
 }

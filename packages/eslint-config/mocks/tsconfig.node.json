@@ -1,0 +1,4 @@
+{
+  "extends": "@simbo/tsconfig/node",
+  "include": ["file.ts"]
+}
