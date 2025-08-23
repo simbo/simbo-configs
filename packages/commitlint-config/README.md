@@ -10,7 +10,7 @@ A shared [commitlint](https://commitlint.js.org/) configuration based on the
 Install commitlint and the configuration:
 
 ```bash
-npm i [-D] @commitlint/cli @simbo/commitlint-config
+npm i -D @commitlint/cli @simbo/commitlint-config
 ```
 
 Create a

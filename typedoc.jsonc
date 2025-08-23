@@ -10,13 +10,15 @@
   "name": "Documentation for Simbo's Packages",
   "router": "kind-dir",
   // "favicon": "./favicon.ico",
-  // "customFooterHtml": "<small><a href='https://github.com/simbo'>simbo</a></small>",
+  "customFooterHtml": "<small><a style='color:#808080' href='http://simbo.mit-license.org/'>MIT &copy; Simon Lepel</a></small> — <small><a style='color:#808080' href='https://simbo.de/'>simbo.de</a></small> — <small><a style='color:#808080' href='https://github.com/simbo'>github.com/simbo</a></small>",
   "hideGenerator": true,
   "includeVersion": false,
+  "githubPages": true,
   "readme": "./typedoc-index.md",
-  // "sidebarLinks": {
-  //   "Repository": "https://github.com/simbo/packages",
-  // },
+  "sidebarLinks": {},
+  "navigationLinks": {
+    "GitHub Repository": "https://github.com/simbo/packages",
+  },
   "searchInComments": true,
   "searchInDocuments": true,
   "visibilityFilters": {

@@ -1,7 +1,7 @@
-This is the [typedoc](https://typedoc.org/) documentation for
-[_Simbo's Packages_](https://github.com/simbo/packages).
+This is the documentation for
+[_Simbo's Packages Repository_](https://github.com/simbo/packages).
 
-It contains a reference for all exports of repository's packages and is
+It contains a reference for all exports of the repository's packages and is
 automatically generated for every main branch update.
 
 Please refer to the repository's
