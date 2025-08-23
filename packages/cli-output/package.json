@@ -1,6 +1,6 @@
 {
   "name": "@simbo/cli-output",
-  "description": "A collection utilities for common CLI messages and output.",
+  "description": "A collection of utilities for common CLI messages and output.",
   "version": "0.0.0",
   "keywords": [
     "cli",
@@ -14,6 +14,9 @@
     "terminated",
     "utility",
     "colors",
+    "formatting",
+    "logging",
+    "print",
     "typescript"
   ],
   "author": "Simon Lepel <simbo@simbo.de> (https://simbo.de/)",
