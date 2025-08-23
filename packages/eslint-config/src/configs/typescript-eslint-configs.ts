@@ -1,7 +1,7 @@
 import { defineConfig } from '@eslint/config-helpers';
 import typescriptEslint from 'typescript-eslint';
 
-import { ConfigsRecord } from '../configs-record.interface.js';
+import type { ConfigsRecord } from '../configs-record.interface.js';
 
 import { typescriptEslintRules } from './typescript-eslint-rules.js';
 

@@ -1,8 +1,8 @@
 import { defineConfig } from '@eslint/config-helpers';
-import { Linter } from 'eslint';
+import type { Linter } from 'eslint';
 import eslintPluginJsdoc from 'eslint-plugin-jsdoc';
 
-import { ConfigsRecord } from '../configs-record.interface.js';
+import type { ConfigsRecord } from '../configs-record.interface.js';
 
 const rules: Linter.RulesRecord = {
   'jsdoc/require-hyphen-before-param-description': ['error', 'always'],

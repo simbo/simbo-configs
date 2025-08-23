@@ -1,8 +1,8 @@
 import { defineConfig } from '@eslint/config-helpers';
-import { Linter } from 'eslint';
+import type { Linter } from 'eslint';
 import eslintConfigPrettier from 'eslint-config-prettier';
 
-import { ConfigsRecord } from '../configs-record.interface.js';
+import type { ConfigsRecord } from '../configs-record.interface.js';
 
 /**
  * Prettier's ESLint configurations exports rules that override and disable

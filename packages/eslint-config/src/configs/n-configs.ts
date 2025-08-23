@@ -1,7 +1,7 @@
 import { defineConfig } from '@eslint/config-helpers';
 import eslintPluginNode from 'eslint-plugin-n';
 
-import { ConfigsRecord } from '../configs-record.interface.js';
+import type { ConfigsRecord } from '../configs-record.interface.js';
 
 const recommended = defineConfig({
   extends: [eslintPluginNode.configs['flat/recommended']],

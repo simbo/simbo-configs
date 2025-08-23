@@ -1,4 +1,4 @@
-import { Linter } from 'eslint';
+import type { Linter } from 'eslint';
 
 import { setRulesToOff } from '../utils/set-rules-to-off.js';
 

@@ -1,6 +1,6 @@
 import { defineConfig } from '@eslint/config-helpers';
 
-import { ConfigsRecord } from './configs-record.interface.js';
+import type { ConfigsRecord } from './configs-record.interface.js';
 import { eslintJsConfigs } from './configs/eslint-js-configs.js';
 import { jsdocConfigs } from './configs/jsdoc-configs.js';
 import { nConfigs } from './configs/n-configs.js';

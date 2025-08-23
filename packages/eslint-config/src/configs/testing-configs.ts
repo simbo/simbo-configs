@@ -1,6 +1,6 @@
 import { defineConfig } from '@eslint/config-helpers';
 
-import { ConfigsRecord } from '../configs-record.interface.js';
+import type { ConfigsRecord } from '../configs-record.interface.js';
 import { setRulesToOff } from '../utils/set-rules-to-off.js';
 
 const recommended = defineConfig({

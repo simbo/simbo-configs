@@ -1,9 +1,9 @@
 import { defineConfig } from '@eslint/config-helpers';
 import eslintJs from '@eslint/js';
-import { Linter } from 'eslint';
+import type { Linter } from 'eslint';
 import globals from 'globals';
 
-import { ConfigsRecord } from '../configs-record.interface.js';
+import type { ConfigsRecord } from '../configs-record.interface.js';
 import { noRestrictedGlobalsRule } from '../utils/no-restricted-globals-rule.js';
 
 const rules: Linter.RulesRecord = {
@@ -33,6 +33,7 @@ const recommendedBrowser = defineConfig({
     ...noRestrictedGlobalsRule(globals.browser, ['console']),
   },
 });
+
 /**
  * Shared ESLint configurations based on `@eslint/js` configurations.
  *
