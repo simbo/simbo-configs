@@ -147,60 +147,70 @@ affected packages and publish them to the registry.
 flowchart LR
 
   subgraph ChecksWorkflow["<code>.github/workflows/checks.yml</code>"]
-    PushToMain@{ shape: rounded, label: "📥 Push to Main" }
-    Checks["Run all Checks and Tests."]
-    ChecksPassed{Passed?}
-    Changesets{Changesets?}
+    PushToMain@{ shape: rounded, label: "📥 Pushed to Main" }
+    Checks["Run all Checks and Tests"]
+    ChecksPassed{"All Checks<br>Passed?"}
+    Changesets{"Changesets<br>Present?"}
     ReleaseEventDispatch@{ shape: rounded, label: "🎉 Release Event" }
 
     direction TB
     PushToMain --> Checks
     Checks --> ChecksPassed
-    ChecksPassed -- "Yes." --> Changesets
-    Changesets -- "Present." --> ReleaseEventDispatch
+    ChecksPassed --"YES"--> Changesets
+    Changesets --"YES"--> ReleaseEventDispatch
   end
 
   subgraph ReleaseWorkflow["<code>.github/workflows/release.yml</code>"]
     ReleaseEvent@{ shape: rounded, label: "🎉 Release Event" }
-    IntegrateAndIncrement["Integrate Changesets.<br>Increment Versions."]
-    CollectPackages["Collect affected Packages.<br>(Direct and Transitive)"]
-    CommitAndPushChanges["Commit & Push Changes."]
-    PushReleaseTags["🏷️ Push a Tag for each<br><code>&lt;PACKAGE&gt;/v&lt;VERSION&gt;</code>."]
+    IntegrateChangesets["Integrate Changesets"]
+    IncrementVersions["Increment Versions"]
+    CollectPackages["Collect affected Packages<br><small>(Direct and Transitive)</small>"]
+    CommitAndPushChanges["Commit & Push Changes"]
+    PushReleaseTags["🏷️ Push a Tag for each<br><code>&lt;PACKAGE&gt;/v&lt;VERSION&gt;</code>"]
 
     direction TB
-    ReleaseEvent --> IntegrateAndIncrement
-    IntegrateAndIncrement --> CollectPackages
+    ReleaseEvent --> IntegrateChangesets
+    IntegrateChangesets --> IncrementVersions
+    IncrementVersions --> CollectPackages
     CollectPackages --> CommitAndPushChanges
     CommitAndPushChanges --> PushReleaseTags
   end
 
   subgraph PublishWorkflow["<code>.github/workflows/publish.yml</code>"]
-    TagEvent@{ shape: rounded, label: "🏷️ Tag Pushed<br><code>&lt;PACKAGE&gt;/v&lt;VERSION&gt;</code>." }
-    BuildPackage["Build Package.<br>Create Tarball."]
-    AggregateReleaseData["Collect Package Data<br>and Changelog Excerpts."]
-    CreateRelease["🎁 Create a GitHub Release"]
-    IsPrivate{"Private?"}
-    NPM[🚀 Publish to npm Registry.]
+    TagEvent@{ shape: rounded, label: "🏷️ Tag Pushed<br><code>&lt;PACKAGE&gt;/v&lt;VERSION&gt;</code>" }
+    BuildPackage["Build Package"]
+    CreateTarball["Create Tarball"]
+    ExtractChangelogEntry["Extract Changelog Entry"]
+    CreateRelease["🎁 Create GitHub Release"]
+    IsPrivate{"Package is<br>Private?"}
+    PublishToNpm[🚀 Publish to npm Registry]
 
     direction TB
     TagEvent --> BuildPackage
-    BuildPackage --> AggregateReleaseData
-    AggregateReleaseData --> CreateRelease
+    BuildPackage --> CreateTarball
+    CreateTarball --> ExtractChangelogEntry
+    ExtractChangelogEntry --> CreateRelease
     CreateRelease --> IsPrivate
-    IsPrivate link3@-- "No." --> NPM
+    IsPrivate --"NO"--> PublishToNpm
   end
 
-  ChecksWorkflow link1@=== ReleaseWorkflow
-  ReleaseWorkflow link2@=== PublishWorkflow
+  ChecksWorkflow Link1@=== ReleaseWorkflow
+  ReleaseWorkflow Link2@=== PublishWorkflow
 
-  classDef animate stroke-dasharray: 9,5,stroke-dashoffset: 900,animation: dash 25s linear infinite;
-  class link1 animate
-  class link2 animate
+  classDef animateLink stroke: #888888,stroke-dasharray:9,5,stroke-dashoffset:900, animation: dash 25s linear infinite;
+  class Link1,Link2 animateLink
 
-  classDef transparent fill:transparent,color:#808080
-  class ChecksWorkflow transparent
-  class ReleaseWorkflow transparent
-  class PublishWorkflow transparent
+  classDef workflow stroke:#888888,fill:transparent;
+  class ChecksWorkflow,ReleaseWorkflow,PublishWorkflow workflow
+
+  classDef event stroke:#B54BC8,stroke-width:2px,fill:transparent;
+  class PushToMain,TagEvent,ReleaseEventDispatch,ReleaseEvent event
+
+  classDef step stroke:#6366F1,stroke-width:2px,fill:transparent;
+  class Checks,IntegrateChangesets,IncrementVersions,CollectPackages,CommitAndPushChanges,PushReleaseTags,BuildPackage,CreateTarball,ExtractChangelogEntry,CreateRelease,PublishToNpm step
+
+  classDef gate stroke:#E67E22,stroke-width:2px,fill:transparent
+  class IsPrivate,ChecksPassed,Changesets gate
 ```
 
 </details>
