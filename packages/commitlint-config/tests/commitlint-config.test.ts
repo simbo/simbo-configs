@@ -7,7 +7,7 @@ import commitlintConfig from '../src/index.js';
 describe('commitlint config', () => {
   it('accepts a valid commit message', async () => {
     const config = await load(commitlintConfig);
-    const result = await lint('feat: some changes', config.rules);
+    const result = await lint('feat(test): some changes', config.rules);
 
     expect(result.valid).toBe(true);
     expect(result.errors).toHaveLength(0);
