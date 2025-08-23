@@ -40,6 +40,7 @@
     "@commitlint/lint": "catalog:packages",
     "@commitlint/load": "catalog:packages",
     "@commitlint/types": "catalog:packages",
+    "@simbo/eslint-config": "workspace:*",
     "@simbo/tsconfig": "workspace:*",
     "@types/node": "catalog:core",
     "@vitest/coverage-v8": "catalog:core",

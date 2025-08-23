@@ -48,8 +48,13 @@
   ],
   "scripts": {
     "build": "tsc --project tsconfig.build.json",
+    "check:eslint": "eslint --config ./eslint.config.ts --max-warnings 0",
     "check:types": "tsc --noEmit",
-    "clean:dist": "rm -rf dist"
+    "clean:dist": "rm -rf dist",
+    "fix:eslint": "pnpm run check:eslint --fix",
+    "test": "vitest run --coverage",
+    "test:ui": "pnpm run test:watch --ui",
+    "test:watch": "vitest dev --coverage"
   },
   "peerDependencies": {
     "eslint": "^9"

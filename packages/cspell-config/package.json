@@ -23,13 +23,20 @@
   ],
   "scripts": {
     "build": "tsc --project tsconfig.build.json",
-    "check:types": "tsc --noEmit"
+    "check:eslint": "eslint --config ./eslint.config.ts --max-warnings 0",
+    "check:types": "tsc --noEmit",
+    "clean:dist": "rm -rf dist",
+    "fix:eslint": "pnpm run check:eslint --fix",
+    "test": "vitest run --coverage",
+    "test:ui": "pnpm run test:watch --ui",
+    "test:watch": "vitest dev --coverage"
   },
   "peerDependencies": {
     "cspell": "^9"
   },
   "devDependencies": {
     "@cspell/cspell-types": "catalog:packages",
+    "@simbo/eslint-config": "workspace:*",
     "@simbo/tsconfig": "workspace:*",
     "@types/node": "catalog:core",
     "@vitest/coverage-v8": "catalog:core",

@@ -24,14 +24,17 @@
     "tsconfig.browser.json",
     "tsconfig.node.json"
   ],
+  "scripts": {
+    "test": "vitest run --coverage",
+    "test:ui": "pnpm run test:watch --ui",
+    "test:watch": "vitest dev --coverage"
+  },
   "peerDependencies": {
     "typescript": "^5"
   },
   "devDependencies": {
     "@vitest/coverage-v8": "catalog:core",
     "@vitest/ui": "catalog:core",
-    "eslint": "catalog:core",
-    "jiti": "catalog:core",
     "vitest": "catalog:core"
   }
 }

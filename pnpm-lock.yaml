@@ -220,6 +220,9 @@ importers:
       '@commitlint/types':
         specifier: catalog:packages
         version: 19.8.1
+      '@simbo/eslint-config':
+        specifier: workspace:*
+        version: link:../eslint-config
       '@simbo/tsconfig':
         specifier: workspace:*
         version: link:../tsconfig
@@ -250,6 +253,9 @@ importers:
       '@cspell/cspell-types':
         specifier: catalog:packages
         version: 9.2.0
+      '@simbo/eslint-config':
+        specifier: workspace:*
+        version: link:../eslint-config
       '@simbo/tsconfig':
         specifier: workspace:*
         version: link:../tsconfig
@@ -338,6 +344,9 @@ importers:
       '@ianvs/prettier-plugin-sort-imports':
         specifier: catalog:packages
         version: 4.6.2(prettier@3.6.2)
+      '@simbo/eslint-config':
+        specifier: workspace:*
+        version: link:../eslint-config
       '@simbo/tsconfig':
         specifier: workspace:*
         version: link:../tsconfig
@@ -381,12 +390,6 @@ importers:
       '@vitest/ui':
         specifier: catalog:core
         version: 3.2.4(vitest@3.2.4)
-      eslint:
-        specifier: catalog:core
-        version: 9.34.0(jiti@2.5.1)
-      jiti:
-        specifier: catalog:core
-        version: 2.5.1
       vitest:
         specifier: catalog:core
         version: 3.2.4(@types/node@20.19.11)(@vitest/ui@3.2.4)(jiti@2.5.1)(yaml@2.8.1)
