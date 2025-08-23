@@ -24,9 +24,11 @@
   "scripts": {
     "build": "tsc --project tsconfig.build.json",
     "check:eslint": "eslint --config ./eslint.config.ts --max-warnings 0",
+    "check:format": "prettier --check .",
     "check:types": "tsc --noEmit",
     "clean:dist": "rm -rf dist",
     "fix:eslint": "pnpm run check:eslint --fix",
+    "fix:format": "prettier --write .",
     "test": "vitest run --coverage",
     "test:ui": "pnpm run test:watch --ui",
     "test:watch": "vitest dev --coverage"
@@ -36,7 +38,9 @@
   },
   "devDependencies": {
     "@cspell/cspell-types": "catalog:packages",
+    "@ianvs/prettier-plugin-sort-imports": "catalog:core",
     "@simbo/eslint-config": "workspace:*",
+    "@simbo/prettier-config": "workspace:*",
     "@simbo/tsconfig": "workspace:*",
     "@types/node": "catalog:core",
     "@vitest/coverage-v8": "catalog:core",
@@ -44,6 +48,8 @@
     "cspell": "catalog:packages",
     "eslint": "catalog:core",
     "jiti": "catalog:core",
+    "prettier": "catalog:core",
+    "prettier-plugin-organize-attributes": "catalog:core",
     "typescript": "catalog:core",
     "vitest": "catalog:core"
   }
