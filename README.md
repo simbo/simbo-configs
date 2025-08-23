@@ -149,9 +149,9 @@ flowchart LR
   subgraph ChecksWorkflow["<code>.github/workflows/checks.yml</code>"]
     PushToMain@{ shape: rounded, label: "📥 Pushed to Main" }
     Checks["Run all Checks and Tests"]
-    ChecksPassed{"All Checks<br>Passed?"}
+    ChecksPassed{"All<br>Passed?"}
     Changesets{"Changesets<br>Present?"}
-    ReleaseEventDispatch@{ shape: rounded, label: "🎉 Release Event" }
+    ReleaseEventDispatch["Dispatch<br>🎉 Release Event"]
 
     direction TB
     PushToMain --> Checks
@@ -165,7 +165,7 @@ flowchart LR
     IntegrateChangesets["Integrate Changesets"]
     IncrementVersions["Increment Versions"]
     CollectPackages["Collect affected Packages<br><small>(Direct and Transitive)</small>"]
-    CommitAndPushChanges["Commit & Push Changes"]
+    CommitAndPushChanges["Commit and Push Changes"]
     PushReleaseTags["🏷️ Push a Tag for each<br><code>&lt;PACKAGE&gt;/v&lt;VERSION&gt;</code>"]
 
     direction TB
@@ -178,7 +178,6 @@ flowchart LR
 
   subgraph PublishWorkflow["<code>.github/workflows/publish.yml</code>"]
     TagEvent@{ shape: rounded, label: "🏷️ Tag Pushed<br><code>&lt;PACKAGE&gt;/v&lt;VERSION&gt;</code>" }
-    BuildPackage["Build Package"]
     CreateTarball["Create Tarball"]
     ExtractChangelogEntry["Extract Changelog Entry"]
     CreateRelease["🎁 Create GitHub Release"]
@@ -186,8 +185,7 @@ flowchart LR
     PublishToNpm[🚀 Publish to npm Registry]
 
     direction TB
-    TagEvent --> BuildPackage
-    BuildPackage --> CreateTarball
+    TagEvent --> CreateTarball
     CreateTarball --> ExtractChangelogEntry
     ExtractChangelogEntry --> CreateRelease
     CreateRelease --> IsPrivate
@@ -204,10 +202,10 @@ flowchart LR
   class ChecksWorkflow,ReleaseWorkflow,PublishWorkflow workflow
 
   classDef event stroke:#B54BC8,stroke-width:2px,fill:transparent;
-  class PushToMain,TagEvent,ReleaseEventDispatch,ReleaseEvent event
+  class PushToMain,TagEvent,ReleaseEvent event
 
   classDef step stroke:#6366F1,stroke-width:2px,fill:transparent;
-  class Checks,IntegrateChangesets,IncrementVersions,CollectPackages,CommitAndPushChanges,PushReleaseTags,BuildPackage,CreateTarball,ExtractChangelogEntry,CreateRelease,PublishToNpm step
+  class Checks,ReleaseEventDispatch,IntegrateChangesets,IncrementVersions,CollectPackages,CommitAndPushChanges,PushReleaseTags,CreateTarball,ExtractChangelogEntry,CreateRelease,PublishToNpm step
 
   classDef gate stroke:#E67E22,stroke-width:2px,fill:transparent
   class IsPrivate,ChecksPassed,Changesets gate
