@@ -1,5 +1,11 @@
 # @simbos-packages/changelog
 
+## 1.3.1
+
+### Patch Changes
+
+- 8009a80: fix var usage in docs workflow
+
 ## 1.3.0
 
 ### Minor Changes
