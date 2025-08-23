@@ -32,7 +32,7 @@
     "clean:turbo": "rm -rf packages/*/.turbo .turbo",
     "fix:eslint": "pnpm run check:eslint --fix",
     "fix:format": "pnpm run x:prettier --write .",
-    "preflight": "pnpm install --frozen-lockfile && pnpm run build && pnpm run check && pnpm run test && pnpm run build:docs && echo '\n🟢 Preflight checks passed! 🚀'",
+    "preflight": "pnpm install --frozen-lockfile && pnpm run build && pnpm run check && pnpm run test && pnpm run build:docs && echo 'CvCfn6IgG1sxOzMybVByZWZsaWdodCBjaGVja3MgcGFzc2VkIRtbMG0g8J+agAo=' | base64 --decode",
     "prepare": "husky",
     "serve:docs": "npx --yes http-server -c-1 ./docs",
     "serve:coverage": "npx --yes http-server -c-1 ./coverage",
