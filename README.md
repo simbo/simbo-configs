@@ -122,13 +122,88 @@ pnpm run [--filter=<PNPM_SELECTOR>] check:spelling
 # types
 pnpm run [--filter=<PNPM_SELECTOR>] check:types
 
-#
+# workspace boundaries
+pnpm run [--filter=<PNPM_SELECTOR>] check:boundaries
+```
+
+#### Docs
+
+```bash
+# generate API docs for all packages using typedoc
+pnpm run build:docs
+
+# serve the documentation locally
+pnpm run serve:docs
 ```
 
 ### Releases and Publishing
 
-Adding changesets to the main branch will automatically trigger releases and
-publish the affected packages.
+Adding changesets to the main branch will automatically create releases for the
+affected packages and publish them to the registry.
+
+<details><summary>🚀 <em>Continuous Integration Flow</em></summary>
+
+```mermaid
+flowchart LR
+
+  subgraph ChecksWorkflow["<code>.github/workflows/checks.yml</code>"]
+    PushToMain@{ shape: rounded, label: "📥 Push to Main" }
+    Checks["Run all Checks and Tests."]
+    ChecksPassed{Passed?}
+    Changesets{Changesets?}
+    ReleaseEventDispatch@{ shape: rounded, label: "🎉 Release Event" }
+
+    direction TB
+    PushToMain --> Checks
+    Checks --> ChecksPassed
+    ChecksPassed -- "Yes." --> Changesets
+    Changesets -- "Present." --> ReleaseEventDispatch
+  end
+
+  subgraph ReleaseWorkflow["<code>.github/workflows/release.yml</code>"]
+    ReleaseEvent@{ shape: rounded, label: "🎉 Release Event" }
+    IntegrateAndIncrement["Integrate Changesets.<br>Increment Versions."]
+    CollectPackages["Collect affected Packages.<br>(Direct and Transitive)"]
+    CommitAndPushChanges["Commit & Push Changes."]
+    PushReleaseTags["🏷️ Push a Tag for each<br><code>&lt;PACKAGE&gt;/v&lt;VERSION&gt;</code>."]
+
+    direction TB
+    ReleaseEvent --> IntegrateAndIncrement
+    IntegrateAndIncrement --> CollectPackages
+    CollectPackages --> CommitAndPushChanges
+    CommitAndPushChanges --> PushReleaseTags
+  end
+
+  subgraph PublishWorkflow["<code>.github/workflows/publish.yml</code>"]
+    TagEvent@{ shape: rounded, label: "🏷️ Tag Pushed<br><code>&lt;PACKAGE&gt;/v&lt;VERSION&gt;</code>." }
+    BuildPackage["Build Package.<br>Create Tarball."]
+    AggregateReleaseData["Collect Package Data<br>and Changelog Excerpts."]
+    CreateRelease["🎁 Create a GitHub Release"]
+    IsPrivate{"Private?"}
+    NPM[🚀 Publish to npm Registry.]
+
+    direction TB
+    TagEvent --> BuildPackage
+    BuildPackage --> AggregateReleaseData
+    AggregateReleaseData --> CreateRelease
+    CreateRelease --> IsPrivate
+    IsPrivate link3@-- "No." --> NPM
+  end
+
+  ChecksWorkflow link1@=== ReleaseWorkflow
+  ReleaseWorkflow link2@=== PublishWorkflow
+
+  classDef animate stroke-dasharray: 9,5,stroke-dashoffset: 900,animation: dash 25s linear infinite;
+  class link1 animate
+  class link2 animate
+
+  classDef transparent fill:transparent,color:#808080
+  class ChecksWorkflow transparent
+  class ReleaseWorkflow transparent
+  class PublishWorkflow transparent
+```
+
+</details>
 
 ## Changelog
 
