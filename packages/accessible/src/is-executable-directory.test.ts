@@ -13,17 +13,17 @@ describe('isExecutableDirectory', () => {
     vi.clearAllMocks();
   });
 
-  it('returns true for an executable file', async () => {
+  it('returns true for an executable directory', async () => {
     isAccessible.mockResolvedValueOnce(true);
     expect(await isExecutableDirectory('/some/executable')).toBe(true);
     expect(isAccessible).toHaveBeenCalledTimes(1);
-    expect(isAccessible).toHaveBeenCalledWith('file', 'x', '/some/executable');
+    expect(isAccessible).toHaveBeenCalledWith('directory', 'x', '/some/executable');
   });
 
-  it('returns false if path is not an executable file', async () => {
+  it('returns false if path is not an executable directory', async () => {
     isAccessible.mockResolvedValueOnce(false);
     expect(await isExecutableDirectory('/some/document')).toBe(false);
     expect(isAccessible).toHaveBeenCalledTimes(1);
-    expect(isAccessible).toHaveBeenCalledWith('file', 'x', '/some/document');
+    expect(isAccessible).toHaveBeenCalledWith('directory', 'x', '/some/document');
   });
 });
