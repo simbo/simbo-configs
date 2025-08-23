@@ -1,5 +1,11 @@
 # @simbos-packages/changelog
 
+## 1.2.0
+
+### Minor Changes
+
+- 6378850: Added Docs Publishing and updated README files.
+
 ## 1.1.0
 
 ### Minor Changes
