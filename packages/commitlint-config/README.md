@@ -5,13 +5,15 @@
 A shared [commitlint](https://commitlint.js.org/) configuration based on the
 [conventional commits](https://www.conventionalcommits.org/) standard.
 
-## Usage
+## Installation
 
-Install commitlint and the configuration:
+Install commitlint and the `@simbo/commitlint-config` from the npm registry:
 
 ```bash
 npm i -D @commitlint/cli @simbo/commitlint-config
 ```
+
+## Usage
 
 Create a
 [commitlint configuration](https://commitlint.js.org/reference/configuration.html)
@@ -26,4 +28,4 @@ extends:
 
 ## License
 
-[MIT © Simon Lepel](http://simbo.mit-license.org/)
+[MIT © Simon Lepel](http://simbo.mit-license.org/2025/)

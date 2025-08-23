@@ -4,16 +4,20 @@
 
 A shared [CSpell](https://cspell.org/) configuration.
 
-## Usage
+## Installation
 
-Install cspell and configuration package:
+Install cspell and `@simbo/cspell-config` from the npm registry:
 
 ```bash
 npm i -D cspell @simbo/cspell-config
 ```
 
-Then create a [CSpell configuration](https://cspell.org/docs/Configuration) file
-in your project root, e.g., `.cspell.yml`, and import the shared configuration:
+## Usage
+
+Create a [CSpell configuration](https://cspell.org/docs/Configuration) file in
+your project root and import the shared configuration.
+
+For example, a `.cspell.yml`:
 
 ```yml
 import: '@simbo/cspell-config'
@@ -21,4 +25,4 @@ import: '@simbo/cspell-config'
 
 ## License
 
-[MIT © Simon Lepel](http://simbo.mit-license.org/)
+[MIT © Simon Lepel](http://simbo.mit-license.org/2025/)

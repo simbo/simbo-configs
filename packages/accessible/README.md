@@ -20,7 +20,7 @@ It helps you determine whether files or directories are **existing**,
 
 ## Installation
 
-Install `@simbo/accessible`:
+Install `@simbo/accessible` from the npm registry:
 
 ```bash
 npm i [-D] @simbo/accessible
@@ -47,4 +47,4 @@ if (await isWritableDirectory('path/to/directory')) {
 
 ## License
 
-[MIT © Simon Lepel](http://simbo.mit-license.org/)
+[MIT © Simon Lepel](http://simbo.mit-license.org/2025/)

@@ -214,4 +214,4 @@ flowchart LR
 
 ## License
 
-[MIT © Simon Lepel](http://simbo.mit-license.org/)
+[MIT © Simon Lepel](http://simbo.mit-license.org/2025/)

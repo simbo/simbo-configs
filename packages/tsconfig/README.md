@@ -4,15 +4,15 @@
 
 Shared TypeScript configurations.
 
-## Usage
+## Installation
 
-Install the package:
+Install `@simbo/tsconfig` from the npm registry:
 
 ```bash
 npm i -D @simbo/tsconfig
 ```
 
-### Extendable Configurations
+## Extendable Configurations
 
 - `@simbo/tsconfig/base` Base configuration (see
   [tsconfig.base.json](./tsconfig.base.json))
@@ -23,7 +23,7 @@ npm i -D @simbo/tsconfig
 - `@simbo/tsconfig/browser` Browser specific configuration (see
   [tsconfig.browser.json](./tsconfig.browser.json))
 
-### Example
+## Example
 
 In your `tsconfig.json`:
 
@@ -38,4 +38,4 @@ In your `tsconfig.json`:
 
 ## License
 
-[MIT © Simon Lepel](http://simbo.mit-license.org/)
+[MIT © Simon Lepel](http://simbo.mit-license.org/2025/)

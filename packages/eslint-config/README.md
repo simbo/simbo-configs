@@ -21,13 +21,15 @@ This package includes a curated set of ESLint-related dependencies:
 Installing `@simbo/eslint-config` automatically includes these dependencies —
 you do not need to add them separately.
 
-## Usage
+## Installation
 
-Install ESLint and `@simbo/eslint-config` as development dependencies:
+Install ESLint and `@simbo/eslint-config` from the npm registry:
 
 ```bash
 npm i -D eslint @simbo/eslint-config
 ```
+
+## Usage
 
 Add one or more configurations to your eslint configuration file (e.g.
 `eslint.config.ts`).
@@ -252,7 +254,7 @@ export default defineConfig([
 
 ## License
 
-[MIT © Simon Lepel](http://simbo.mit-license.org/)
+[MIT © Simon Lepel](http://simbo.mit-license.org/2025/)
 
 [ESLint]: https://eslint.org/
 [`no-restricted-globals`]: https://eslint.org/docs/rules/no-restricted-globals

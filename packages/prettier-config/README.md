@@ -4,17 +4,23 @@
 
 A shared [Prettier](https://prettier.io/) configuration.
 
-## Usage
+## Installation
 
-Install Prettier, the required plugins, and the configuration:
+Install Prettier, the required plugins, and the `@simbo/prettier-config` from
+the npm registry:
 
 ```bash
 npm i -D prettier @ianvs/prettier-plugin-sort-imports prettier-plugin-organize-attributes @simbo/prettier-config
 ```
 
-Then create a
-[Prettier configuration file](https://prettier.io/docs/configuration) in the
-root of your project.
+## Usage
+
+Create a [Prettier configuration file](https://prettier.io/docs/configuration)
+in the root of your project.
+
+```bash
+echo "@simbo/prettier-config" > .prettierrc
+```
 
 And your done. 🍻
 
@@ -44,4 +50,4 @@ export default {
 
 ## License
 
-[MIT © Simon Lepel](http://simbo.mit-license.org/)
+[MIT © Simon Lepel](http://simbo.mit-license.org/2025/)
