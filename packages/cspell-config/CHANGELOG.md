@@ -1,5 +1,11 @@
 # @simbo/cspell-config
 
+## 1.1.1
+
+### Patch Changes
+
+- 648a6ea: add tests
+
 ## 1.1.0
 
 ### Minor Changes

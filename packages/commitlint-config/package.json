@@ -1,7 +1,7 @@
 {
   "name": "@simbo/commitlint-config",
   "description": "Simbo's shared commitlint configuration based on the conventional commits standard.",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "author": "Simon Lepel <simbo@simbo.de> (https://simbo.de/)",
   "license": "MIT",
   "homepage": "http://github.com/simbo/packages/tree/main/packages/commitlint-config",

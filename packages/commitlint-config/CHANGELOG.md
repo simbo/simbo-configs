@@ -1,5 +1,11 @@
 # @simbo/commitlint-config
 
+## 1.0.2
+
+### Patch Changes
+
+- 0ddaa38: fix tests for scope usage
+
 ## 1.0.1
 
 ### Patch Changes

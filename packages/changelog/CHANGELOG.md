@@ -1,5 +1,16 @@
 # @simbos-packages/changelog
 
+## 1.3.0
+
+### Minor Changes
+
+- a221cdc: setup eslint for all packages
+
+### Patch Changes
+
+- db57144: enable unit tests in checks workflow
+- deba441: add vitest configs to all workspaces
+
 ## 1.2.0
 
 ### Minor Changes

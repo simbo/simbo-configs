@@ -1,5 +1,11 @@
 # @simbo/prettier-config
 
+## 1.0.2
+
+### Patch Changes
+
+- 744b6ac: add tests
+
 ## 1.0.1
 
 ### Patch Changes
