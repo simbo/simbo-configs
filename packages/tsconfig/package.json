@@ -20,9 +20,7 @@
     "CHANGELOG.md",
     "LICENSE.md",
     "README.md",
-    "tsconfig.base.json",
-    "tsconfig.browser.json",
-    "tsconfig.node.json"
+    "configs"
   ],
   "scripts": {
     "test": "vitest run --coverage",
