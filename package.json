@@ -1,5 +1,5 @@
 {
-  "name": "simbos-packages",
+  "name": "packages",
   "description": "A monorepo for my packages.",
   "version": "0.0.0",
   "private": true,
