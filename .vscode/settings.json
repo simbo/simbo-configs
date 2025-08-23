@@ -1,5 +1,7 @@
 {
-  "files.associations": {},
+  "files.associations": {
+    "tsconfig*.json": "jsonc"
+  },
   "cSpell.enabled": true,
   "cSpell.enabledFileTypes": {
     "*": false,

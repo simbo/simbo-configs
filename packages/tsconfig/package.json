@@ -12,9 +12,9 @@
   },
   "type": "module",
   "exports": {
-    "./base": "./tsconfig.base.json",
-    "./node": "./tsconfig.node.json",
-    "./browser": "./tsconfig.browser.json"
+    "./base": "./configs/tsconfig.base.json",
+    "./node": "./configs/tsconfig.node.json",
+    "./browser": "./configs/tsconfig.browser.json"
   },
   "files": [
     "CHANGELOG.md",
