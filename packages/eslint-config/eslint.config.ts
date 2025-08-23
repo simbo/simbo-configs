@@ -13,4 +13,10 @@ export default defineConfig([
     },
     extends: [configs.node.recommended],
   },
+  {
+    files: ['mocks/**/*.ts', 'mocks/**/*.js'],
+    rules: {
+      'n/no-unpublished-import': 'off',
+    },
+  },
 ]);
