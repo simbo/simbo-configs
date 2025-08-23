@@ -1,0 +1,51 @@
+name: Docs
+
+on:
+  repository_dispatch:
+    types:
+      - trigger-docs-publishing
+
+run-name: |
+  ${{ format('[{0}] {1}', github.workflow, github.event_name == 'push' && github.event.head_commit.message) }}
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref_name }}
+  cancel-in-progress: false
+
+jobs:
+  docs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🛎️ Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GH_PAT }}
+
+      - name: 🚚 Install pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: 🛠️ Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          cache: 'pnpm'
+          node-version-file: '.nvmrc'
+
+      - name: 📦 Install Dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: 👷‍♂️ Build Packages
+        run: pnpm run build
+
+      - name: 📘 Build Docs
+        run: pnpm run build:docs
+
+      - name: 🚚 Deploy Docs
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          token: ${{ secrets.GH_PAT }}
+          git-config-name: '${{ github.actor }}'
+          git-config-email: '${{ github.actor_id }}+${{ github.actor }}@users.noreply.github.com'
+          folder: docs
+          branch: gh-pages
+          clean: true
+          single-commit: true
