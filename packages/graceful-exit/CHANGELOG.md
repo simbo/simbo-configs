@@ -1,5 +1,14 @@
 # @simbo/graceful-exit
 
+## 1.0.2
+
+### Patch Changes
+
+- 6639b0f: link related packages in readme
+- Updated dependencies [6639b0f]
+  - @simbo/stringify-error@1.0.1
+  - @simbo/user-facing-error@1.0.1
+
 ## 1.0.1
 
 ### Patch Changes

@@ -1,5 +1,12 @@
 # @simbo/globby-has-matches
 
+## 1.0.1
+
+### Patch Changes
+
+- Updated dependencies [6639b0f]
+  - @simbo/stringify-error@1.0.1
+
 ## 1.0.0
 
 ### Major Changes
