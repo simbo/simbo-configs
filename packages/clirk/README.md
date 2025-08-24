@@ -2,8 +2,8 @@
 
 [📦 **`@simbo/clirk`**](https://npmjs.com/package/@simbo/clirk)
 
-A utility that simplifies creating Node.js CLIs and provides **common CLI
-functionalities** out of the box.
+A utility for building Node.js CLIs with **common functionality**, a **small
+footprint**, and **excellent performance**.
 
 ## Features
 
@@ -79,6 +79,12 @@ import { main } from './main.js';
 
 await clitch(main);
 ```
+
+## Related Packages
+
+- [@simbo/graceful-exit](https://npmjs.com/package/@simbo/graceful-exit)
+- [@simbo/stringify-error](https://npmjs.com/package/@simbo/stringify-error)
+- [@simbo/user-facing-error](https://npmjs.com/package/@simbo/user-facing-error)
 
 ## License
 

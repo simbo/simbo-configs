@@ -1,19 +1,17 @@
 {
   "name": "@simbo/clirk",
-  "description": "A utility that simplifies creating Node.js CLIs and provides common CLI functionalities out of the box.",
+  "description": "A utility for building Node.js CLIs with common functionality, a small footprint, and excellent performance.",
   "version": "1.0.0",
-  "author": "Simon Lepel <simbo@simbo.de> (https://simbo.de/)",
-  "license": "MIT",
-  "homepage": "http://github.com/simbo/packages/tree/main/packages/clirk",
-  "repository": "github:simbo/packages",
-  "bugs": "https://github.com/simbo/packages/issues",
   "keywords": [
     "cli",
     "framework",
+    "cli-framework",
     "clirk",
     "command-line",
     "arguments",
+    "argument-parser",
     "help",
+    "help-generator",
     "version",
     "exit",
     "graceful-exit",
@@ -21,6 +19,11 @@
     "tooling",
     "typescript"
   ],
+  "author": "Simon Lepel <simbo@simbo.de> (https://simbo.de/)",
+  "license": "MIT",
+  "homepage": "http://github.com/simbo/packages/tree/main/packages/clirk",
+  "repository": "github:simbo/packages",
+  "bugs": "https://github.com/simbo/packages/issues",
   "engines": {
     "node": ">=20"
   },

@@ -64,6 +64,7 @@ and creates respective output:
 
 ## Related Packages
 
+- [@simbo/clirk](https://npmjs.com/package/@simbo/clirk)
 - [@simbo/graceful-exit](https://npmjs.com/package/@simbo/graceful-exit)
 - [@simbo/user-facing-error](https://npmjs.com/package/@simbo/user-facing-error)
 

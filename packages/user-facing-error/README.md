@@ -68,6 +68,7 @@ try {
 
 ## Related Packages
 
+- [@simbo/clirk](https://npmjs.com/package/@simbo/clirk)
 - [@simbo/graceful-exit](https://npmjs.com/package/@simbo/graceful-exit)
 - [@simbo/stringify-error](https://npmjs.com/package/@simbo/stringify-error)
 
