@@ -1,5 +1,12 @@
 # @simbos-packages/changelog
 
+## 1.4.1
+
+### Patch Changes
+
+- 8940463: precede docs build by global build and improve success message for
+  preflight script
+
 ## 1.4.0
 
 ### Minor Changes
