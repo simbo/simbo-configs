@@ -1,5 +1,11 @@
 # @simbo/commitlint-config
 
+## 1.0.3
+
+### Patch Changes
+
+- a6fee7f: add package keywords
+
 ## 1.0.2
 
 ### Patch Changes

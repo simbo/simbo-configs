@@ -1,5 +1,12 @@
 # @simbo/tsconfig
 
+## 1.0.3
+
+### Patch Changes
+
+- 275959f: fix package files
+- a6fee7f: add package keywords
+
 ## 1.0.2
 
 ### Patch Changes

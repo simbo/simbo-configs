@@ -1,0 +1,12 @@
+# @simbo/find-bin
+
+## 1.0.0
+
+### Major Changes
+
+- 7522b93: Initial Release
+
+### Patch Changes
+
+- Updated dependencies [cc9dd53]
+  - @simbo/accessible@1.0.0

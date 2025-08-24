@@ -1,5 +1,11 @@
 # @simbo/cspell-config
 
+## 1.1.2
+
+### Patch Changes
+
+- a6fee7f: add package keywords
+
 ## 1.1.1
 
 ### Patch Changes

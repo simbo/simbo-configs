@@ -1,5 +1,17 @@
 # @simbos-packages/changelog
 
+## 1.4.0
+
+### Minor Changes
+
+- 40384c9: setup turbo tasks for eslint and prettier
+- 4bbebf1: setup prettier for all workspaces
+
+### Patch Changes
+
+- 62e9cbf: add `CHANGELOG.md` referring to the actual changelogs and update the
+  readme
+
 ## 1.3.1
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # @simbo/eslint-config
 
+## 1.0.2
+
+### Patch Changes
+
+- c7d7a92: fix eslint config for mocks
+
 ## 1.0.1
 
 ### Patch Changes
