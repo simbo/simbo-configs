@@ -1,0 +1,67 @@
+{
+  "name": "@simbo/monorepo-packages-list",
+  "description": "A utility library that generates a list of monorepo packages with metadata.",
+  "version": "0.0.0",
+  "keywords": [
+    "monorepo",
+    "packages",
+    "list",
+    "workspace",
+    "metadata",
+    "generate",
+    "markdown",
+    "docs",
+    "catalog",
+    "repository",
+    "utility",
+    "typescript"
+  ],
+  "author": "Simon Lepel <simbo@simbo.de> (https://simbo.de/)",
+  "license": "MIT",
+  "homepage": "http://github.com/simbo/packages/tree/main/packages/monorepo-packages-list",
+  "repository": "github:simbo/packages",
+  "bugs": "https://github.com/simbo/packages/issues",
+  "engines": {
+    "node": ">=20"
+  },
+  "type": "module",
+  "exports": {
+    ".": "./dist/index.js"
+  },
+  "files": [
+    "CHANGELOG.md",
+    "dist",
+    "LICENSE.md",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc --project tsconfig.build.json",
+    "check:eslint": "eslint --config ./eslint.config.ts --max-warnings 0",
+    "check:format": "prettier --check .",
+    "check:types": "tsc --noEmit",
+    "clean:dist": "rm -rf dist",
+    "fix:eslint": "pnpm run check:eslint --fix",
+    "fix:format": "prettier --write .",
+    "test": "vitest run --coverage",
+    "test:ui": "pnpm run test:watch --ui",
+    "test:watch": "vitest dev --coverage"
+  },
+  "dependencies": {
+    "@simbo/monorepo-utils": "workspace:*"
+  },
+  "devDependencies": {
+    "@ianvs/prettier-plugin-sort-imports": "catalog:core",
+    "@simbo/eslint-config": "workspace:*",
+    "@simbo/prettier-config": "workspace:*",
+    "@simbo/tsconfig": "workspace:*",
+    "@types/node": "catalog:core",
+    "@vitest/coverage-v8": "catalog:core",
+    "@vitest/ui": "catalog:core",
+    "eslint": "catalog:core",
+    "jiti": "catalog:core",
+    "prettier": "catalog:core",
+    "prettier-plugin-organize-attributes": "catalog:core",
+    "typescript": "catalog:core",
+    "vitest": "catalog:core"
+  }
+}
