@@ -113,7 +113,7 @@ try {
 
 Steps are stored in a `Set` and executed in **registration order**.
 
-> [!HINT]  
+> [!NOTE]  
 > If any teardown step fails during an otherwise successful exit (code `0`), the
 > exit code is switched to `1` and the error is logged.
 

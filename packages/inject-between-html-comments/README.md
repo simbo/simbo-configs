@@ -59,8 +59,8 @@ Hello World!
 
 <!-- /INJECT -->
 */
+```
 
 ## License
 
 [MIT © Simon Lepel](http://simbo.mit-license.org/2025/)
-```
