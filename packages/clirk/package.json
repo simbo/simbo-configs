@@ -1,7 +1,7 @@
 {
   "name": "@simbo/clirk",
   "description": "A utility that simplifies creating Node.js CLIs and provides common CLI functionalities out of the box.",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "author": "Simon Lepel <simbo@simbo.de> (https://simbo.de/)",
   "license": "MIT",
   "homepage": "http://github.com/simbo/packages/tree/main/packages/clirk",
